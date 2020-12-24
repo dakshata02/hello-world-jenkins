@@ -14,6 +14,13 @@ pipeline {
             bat label: 'Test running', script: '''mvn test'''
           
        }
+       stage('SonarQube'){
+        steps{
+                bat label: '', script: '''mvn sonar:sonar \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=be01ac748a29e48846f047c6f5894bda94a7935f'''
+            }
+           
        }
    
     stage('Maven Package'){
